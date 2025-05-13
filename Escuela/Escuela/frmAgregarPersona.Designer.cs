@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblTItuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.grpProfesor = new System.Windows.Forms.GroupBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lblTitulo2 = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.txtTitulo = new System.Windows.Forms.TextBox();
@@ -61,7 +62,8 @@
             this.lblGrupo = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
             this.btnAgregarPesona = new System.Windows.Forms.Button();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.grbTipo.SuspendLayout();
             this.grpProfesor.SuspendLayout();
@@ -77,12 +79,12 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Ingrese los datos de la persona";
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtNombre.Location = new System.Drawing.Point(172, 57);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 1;
             // 
             // contextMenuStrip1
             // 
@@ -204,6 +206,19 @@
             this.grpProfesor.TabStop = false;
             this.grpProfesor.Text = "Datos profesor";
             this.grpProfesor.Visible = false;
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Titular",
+            "Suplente",
+            "Provisional"});
+            this.cmbCategoria.Location = new System.Drawing.Point(141, 115);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(100, 21);
+            this.cmbCategoria.TabIndex = 19;
             // 
             // lblTitulo2
             // 
@@ -346,18 +361,22 @@
             this.btnAgregarPesona.UseVisualStyleBackColor = true;
             this.btnAgregarPesona.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cmbCategoria
+            // dtpFechaNac
             // 
-            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "Titular",
-            "Suplente",
-            "Provisional"});
-            this.cmbCategoria.Location = new System.Drawing.Point(141, 115);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(100, 21);
-            this.cmbCategoria.TabIndex = 19;
+            this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNac.Location = new System.Drawing.Point(172, 235);
+            this.dtpFechaNac.Name = "dtpFechaNac";
+            this.dtpFechaNac.Size = new System.Drawing.Size(100, 20);
+            this.dtpFechaNac.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(54, 241);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Fecha de Nacimiento";
             // 
             // frmAgregarPersona
             // 
@@ -365,6 +384,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtpFechaNac);
             this.Controls.Add(this.btnAgregarPesona);
             this.Controls.Add(this.grpAlumno);
             this.Controls.Add(this.bntVolver);
@@ -379,10 +400,11 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.grbTipo);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblTitulo);
             this.Name = "frmAgregarPersona";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAgregarPersona_FormClosing);
             this.contextMenuStrip1.ResumeLayout(false);
             this.grbTipo.ResumeLayout(false);
             this.grbTipo.PerformLayout();
@@ -398,7 +420,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.GroupBox grbTipo;
@@ -430,5 +452,7 @@
         private System.Windows.Forms.TextBox txtGrupo;
         private System.Windows.Forms.Button btnAgregarPesona;
         private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.DateTimePicker dtpFechaNac;
+        private System.Windows.Forms.Label label1;
     }
 }
